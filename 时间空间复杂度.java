@@ -36,3 +36,25 @@ int cal(int n) {
 // 空间复杂度：
 // 空间复杂度就是渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的
 // 增长关系。
+
+// 全局变量，大小为10的数组array,长度len，下标i
+int array[] = new int[10];
+int len = 10;
+int i = 0;
+
+// 往数组中添加一个元素
+void add(int element) {
+	if (i >= len) { // 数组空间已满之后
+		int new_array[] = new int[len*2];
+		// 把原来array数组中的数据一次copy到new_array中
+		for (int j = 0; j <len; ++j) {
+			new_array[j] = array[j];
+		}
+		// mew_array[j]复制给array,空间扩大为2倍
+		array = new_array;
+		len = len * 2;
+	}
+	// 将element放到i位置，i加1
+	array[i] = element;
+	++i;
+}
